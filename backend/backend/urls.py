@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import CreateUserView, ListCreateTaskView, DeleteTaskView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/register/', CreateUserView.as_view()),
+    path('api/todo/', ListCreateTaskView.as_view()),
+    path('api/todo/delete/<int:pk>', DeleteTaskView.as_view()),
 ]
