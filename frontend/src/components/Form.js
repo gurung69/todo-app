@@ -35,11 +35,14 @@ function Form({method, route}){
     }
 
     return(
-        <form onSubmit={hanldeSubmission}>
-            <input type="text" placeholder="User name" value={username} onChange={(e)=>{setUsername(e.target.value)}}></input>
-            <input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
-            <button>{name}</button>
-        </form>
+        <div>
+            <h1>{name}</h1>
+            <form onSubmit={hanldeSubmission}>
+                <input type="text" placeholder="User name" value={username} onChange={(e)=>{setUsername(e.target.value)}}></input>
+                <input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
+                <button>{name}</button>
+            </form>
+        </div>
     )
 }
 
