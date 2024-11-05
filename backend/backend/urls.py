@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import CreateUserView, ListCreateTaskView, DeleteTaskView
+from api.views import CreateUserView, ListCreateTaskView, DeleteTaskView, UpdateTaskView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -25,7 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/todo/register/', CreateUserView.as_view()),
     path('api/todo/', ListCreateTaskView.as_view()),
-    path('api/todo/delete/<int:pk>', DeleteTaskView.as_view()),
+    path('api/todo/delete/<int:pk>/', DeleteTaskView.as_view()),
+    path('api/todo/update/<int:pk>/', UpdateTaskView.as_view()),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
