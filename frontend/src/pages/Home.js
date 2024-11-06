@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api";
+import "../styles/Home.css"
 
 function Home(){
     const [task, setTask] = useState("");
@@ -43,6 +44,11 @@ function Home(){
         api.patch(`api/todo/update/${id}/`, {completed:isComplete})
         .then(()=>{
             getTasks();
+            if (isComplete){
+                document.getElementById(id).classList.add("completed");
+            } else {
+                document.getElementById(id).classList.remove("completed");
+            }
         })
         .catch(error=>{
             console.log(error);
@@ -56,15 +62,15 @@ function Home(){
     const taskslist = tasks.map(task=>{
         return(
             <li key={task.id}>
-                <input type="checkbox" onChange={(e)=>{toogleComplete(e, task.id)}} checked={task.completed} ></input>
-                <span>{task.task}</span>
-                <button onClick={()=>{deleteTask(task.id)}}>Delete</button>
+                <input type="checkbox" onChange={(e)=>{toogleComplete(e, task.id)}} checked={task.completed}></input>
+                <span id={task.id} className={task.completed?"completed":''} >{task.task}</span>
+                <button onClick={()=>{deleteTask(task.id)}} className="delete-btn">Delete</button>
             </li>
         )
     })
     return(
-        <div>
-            <form onSubmit={createTask}>
+        <div className="todo-app">
+            <form onSubmit={createTask} className="todo-form">
                 <input type="text" value={task} onChange={e=>{setTask(e.target.value)}}></input>
                 <button>Add Task</button>
             </form>

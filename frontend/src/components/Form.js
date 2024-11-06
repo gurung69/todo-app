@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 import { useNavigate } from "react-router-dom";
+import "../styles/Form.css"
 
 function Form({method, route}){
     const [username, setUsername] = useState("");
@@ -35,9 +36,9 @@ function Form({method, route}){
     }
 
     return(
-        <div>
+        <div className="form-container">
             <h1>{name}</h1>
-            <form onSubmit={hanldeSubmission}>
+            <form onSubmit={hanldeSubmission} className="rl-form">
                 <input type="text" placeholder="User name" value={username} onChange={(e)=>{setUsername(e.target.value)}}></input>
                 <input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
                 <button>{name}</button>
