@@ -35,3 +35,18 @@ form button{
     border-radius: 5px;
     cursor: pointer;
 }
+
+.form-container a{
+    color: #ddd;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-container a:hover{
+    color: #000;
+}
+.form-container a:visited{
+    color: #ddd;
+}
+.form-container a:visited:hover{
+    color: #000;
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Form.css"
 
 function Form({method, route}){
@@ -43,6 +43,7 @@ function Form({method, route}){
                 <input type="password" placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
                 <button>{name}</button>
             </form>
+            {method==="login"?<Link to="/register">Create Account</Link>:<Link to="/login">Already have an account?</Link>}
         </div>
     )
 }
