@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api";
 import "../styles/Home.css"
+import { Link } from "react-router-dom";
 
 function Home(){
     const [task, setTask] = useState("");
@@ -69,14 +70,20 @@ function Home(){
         )
     })
     return(
-        <div className="todo-app">
-            <form onSubmit={createTask} className="todo-form">
-                <input type="text" value={task} onChange={e=>{setTask(e.target.value)}}></input>
-                <button>Add Task</button>
-            </form>
-            <ul>
-                {taskslist}
-            </ul>
+        <div>
+            <nav>
+                <span>ToDo App</span>
+                <Link to="/logout">Log Out</Link>
+            </nav>
+            <div className="todo-app">
+                <form onSubmit={createTask} className="todo-form">
+                    <input type="text" value={task} onChange={e=>{setTask(e.target.value)}}></input>
+                    <button>Add Task</button>
+                </form>
+                <ul>
+                    {taskslist}
+                </ul>
+            </div>
         </div>
     )
 }
